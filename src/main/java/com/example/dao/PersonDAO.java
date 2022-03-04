@@ -10,7 +10,7 @@ import java.util.List;
 public class PersonDAO {
 
     private static int peopleCount;
-    private List<Person> people;
+    private final List<Person> people;
 
     {
         people = new ArrayList<>();
@@ -43,5 +43,9 @@ public class PersonDAO {
             Person personToBeUpdated = show(person.getId());
             personToBeUpdated.setName(person.getName());
         } catch (Exception ex) {}
+    }
+
+    public void delete(int id){
+        people.removeIf(p->p.getId() == id);
     }
 }

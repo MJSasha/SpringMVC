@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/people")
 public class PeopleController {
 
-    private PersonDAO personDAO;
+    private final PersonDAO personDAO;
 
     @Autowired
     public PeopleController(PersonDAO personDAO) {
@@ -60,6 +60,12 @@ public class PeopleController {
     public String update(@ModelAttribute Person person, @PathVariable int id){
         person.setId(id);
         personDAO.update(person);
+        return "redirect:/people";
+    }
+
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable int id){
+        personDAO.delete(id);
         return "redirect:/people";
     }
 }
