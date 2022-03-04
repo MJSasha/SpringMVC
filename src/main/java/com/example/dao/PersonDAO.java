@@ -15,10 +15,10 @@ public class PersonDAO {
     {
         people = new ArrayList<>();
 
-        people.add(new Person(++peopleCount, "Sasha"));
-        people.add(new Person(++peopleCount, "Vova"));
-        people.add(new Person(++peopleCount, "Petya"));
-        people.add(new Person(++peopleCount, "Lesha"));
+        people.add(new Person(++peopleCount, "Sasha", 18, "sasha@gmail.com"));
+        people.add(new Person(++peopleCount, "Vova", 19, "vova@gmail.com"));
+        people.add(new Person(++peopleCount, "Petya", 28, "petya@gmail.com"));
+        people.add(new Person(++peopleCount, "Lesha", 29, "lesha@gmail.com"));
     }
 
 
@@ -42,6 +42,8 @@ public class PersonDAO {
         try {
             Person personToBeUpdated = show(person.getId());
             personToBeUpdated.setName(person.getName());
+            personToBeUpdated.setAge(person.getAge());
+            personToBeUpdated.setEmail(person.getEmail());
         } catch (Exception ex) {}
     }
 
