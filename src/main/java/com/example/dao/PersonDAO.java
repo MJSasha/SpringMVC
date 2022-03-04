@@ -32,4 +32,16 @@ public class PersonDAO {
                 findAny().
                 orElseThrow(() -> new Exception("Cant find"));
     }
+
+    public void save(Person person){
+        person.setId(++peopleCount);
+        people.add(person);
+    }
+
+    public void update(Person person){
+        try {
+            Person personToBeUpdated = show(person.getId());
+            personToBeUpdated.setName(person.getName());
+        } catch (Exception ex) {}
+    }
 }
